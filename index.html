@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .container {
+            width: 100%;
+            box-sizing: border-box;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins' sans-serif;
+        }
+        .card{
+            border-radius: 2rem;
+            padding: 2rem;
+            text-align: center;
+            width: 70%;
+            height: 70%;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content : space-evenly;
+            flex-direction: column;
+        }
+        span{
+            font-size: 4rem;
+        }
+        .joke{
+            color: white;
+            font-size: 1.5rem;
+        }
+        .btn{
+            padding: .8rem 1.2rem;
+            cursor: pointer;
+            border-radius: .5rem;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <span>&#128514;</span>
+            <p class="joke">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla, iusto.
+            </p>
+            <button class="btn" onclick="generateJoke(Url)">Get Joke</button>
+        </div>
+    </div>
+    <script>
+        const joke = document.querySelector('.joke');
+
+        const Url = 'https://v2.jokeapi.dev/joke/Any?blacklistFlags=political,racist,explicit&type=single';
+
+        async function generateJoke(url){
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log(data);
+            joke.innerHTML = data.joke;
+        }
+    </script>
+</body>
+
+</html>
